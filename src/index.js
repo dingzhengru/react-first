@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
     <IncreaseCount count={10} />
-    <IncreaseCount count={100} isLoggedIn={true} />
+    <IncreaseCount count={100} isLoggedIn={true} list={[1, 2, 3]} />
     <IncreaseCount isShow={false} />
   </React.StrictMode>,
   document.getElementById('root')

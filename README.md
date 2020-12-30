@@ -1,5 +1,6 @@
 - [Getting Started with Create React App](#getting-started-with-create-react-app)
   - [Component & props & state](#component--props--state)
+  - [Form](#form)
   - [Redux](#redux)
 
 # Getting Started with Create React App
@@ -11,6 +12,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - state: 是讓元件控制自己的狀態
 - props: 是讓外部對元件自己進行配置
 - props 或 state 被改變時才會更新 Virtual DOM
+
+## Form
+
+建議使用套件處理
+
+- [formik](https://github.com/formium/formik)
+- [react-hook-form (推)](https://github.com/react-hook-form/react-hook-form)
 
 ## Redux
 
