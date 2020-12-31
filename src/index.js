@@ -3,15 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import IncreaseCount from './components/increaseCount';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <IncreaseCount count={10} />
-    <IncreaseCount count={100} isLoggedIn={true} list={[1, 2, 3]} />
-    <IncreaseCount isShow={false} />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
