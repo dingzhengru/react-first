@@ -10,6 +10,8 @@
     - [監測 route 變化](#監測-route-變化)
     - [Multiple Contexts](#multiple-contexts)
   - [scss](#scss)
+  - [Proxy](#proxy)
+    - [在開發環境設定 Proxy](#在開發環境設定-proxy)
 
 # Getting Started with Create React App
 
@@ -100,3 +102,31 @@ return (
 ## scss
 
 `npm install node-sass@4` 即可
+
+## Proxy
+
+### 在開發環境設定 Proxy
+
+參考: [官方](https://create-react-app.dev/docs/proxying-api-requests-in-development/#configuring-the-proxy-manually)
+
+下載 `npm install http-proxy-middleware --save`
+新增 src/setupProxy.js ，並填寫其內容即可，開發伺服器會自動載入其檔案
+
+> Note: You do not need to import this file anywhere.
+> It is automatically registered when you start the development server.
+
+範例
+
+```js
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+module.exports = function (app) {
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://localhost:3080',
+      changeOrigin: true,
+    })
+  );
+};
+```

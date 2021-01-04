@@ -10,3 +10,9 @@ body {
 
   padding: 15px;
 }
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}

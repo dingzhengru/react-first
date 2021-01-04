@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
 
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 //* Class Component (過時，但官方不會移除掉)
 import IncreaseCount from './components/increaseCount';
@@ -19,7 +19,10 @@ import ContextTest from './components/ContextTest';
 //* Router
 import Router from './components/Router';
 
-import { useLocation } from 'react-router-dom';
+//* FetchData
+import FetchDataTest from './components/FetchDataTest';
+
+import { useLocation, useHistory } from 'react-router-dom';
 
 //* 測試溫度轉換，接近 vue 的 computed
 function toCelsius(fahrenheit) {
@@ -45,16 +48,28 @@ function App() {
     setTemperature(temperature);
   };
 
-  //* context
+  //* Context
   const [theme, setTheme] = useState(themes.light);
 
+  //* Router
+  //* 這裡使用 useLayoutEffect，會在 render 畫面之前執行
   //* 設置只有改變 route 才觸發的 useEffect (第二個參數: 只針對甚麼改變才觸發)
   const location = useLocation();
-  useEffect(() => {
+  const history = useHistory();
+  useLayoutEffect(() => {
     console.log('[Change-Route]', location);
+
+    if (location.state === undefined) {
+      return;
+    }
 
     //* 等同於 vue-router 裡的 meta，需於 Link 標籤的 to 內設置
     console.log('[location.state.auth]', location.state.auth);
+
+    //* 設定條件轉址(auth)
+    if (location.state.auth === true) {
+      history.push({ pathname: '/' });
+    }
   }, [location]);
 
   return (
@@ -93,6 +108,9 @@ function App() {
           <button onClick={() => setTheme(theme == themes.light ? themes.dark : themes.light)}>切換</button>
           <ContextTest />
         </div>
+
+        <h2>FetchData</h2>
+        <FetchDataTest />
       </div>
     </ThemeContext.Provider>
   );
