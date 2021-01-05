@@ -9,7 +9,7 @@ import IncreaseCount from './components/increaseCount';
 import TemperatureInput from './components/TemperatureInput';
 import PropsChildTest from './components/PropsChildTest';
 
-//* Hook Compoent(官方推薦)
+//* Hook(官方推薦)
 import HookTest from './components/HookTest';
 
 //* Context
@@ -18,11 +18,17 @@ import ContextTest from './components/ContextTest';
 
 //* Router
 import Router from './components/Router';
+import { useLocation, useHistory } from 'react-router-dom';
 
 //* FetchData
 import FetchDataTest from './components/FetchDataTest';
 
-import { useLocation, useHistory } from 'react-router-dom';
+//* Transition
+import TransitionTest from './components/TransitionTest';
+
+//* i18n
+import { useTranslation } from 'react-i18next';
+import { loadLanguageAsync } from './i18n-lazy';
 
 //* 測試溫度轉換，接近 vue 的 computed
 function toCelsius(fahrenheit) {
@@ -72,6 +78,12 @@ function App() {
     }
   }, [location]);
 
+  //* i18n
+  const { t, i18n } = useTranslation();
+  const handleLangChange = lang => {
+    loadLanguageAsync(lang);
+  };
+
   return (
     <ThemeContext.Provider value={theme}>
       <div className="App">
@@ -111,6 +123,16 @@ function App() {
 
         <h2>FetchData</h2>
         <FetchDataTest />
+
+        <h2>Transition</h2>
+        <TransitionTest />
+
+        <h2>i18n</h2>
+        <p>
+          {i18n.language}: {t('hi')} <br />
+          {i18n.language}: {t('test')}
+        </p>
+        <button onClick={() => handleLangChange(i18n.language == 'enUs' ? 'zhTw' : 'enUs')}>變更語系</button>
       </div>
     </ThemeContext.Provider>
   );

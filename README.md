@@ -12,6 +12,8 @@
   - [scss](#scss)
   - [Proxy](#proxy)
     - [在開發環境設定 Proxy](#在開發環境設定-proxy)
+  - [Transition](#transition)
+  - [i18n](#i18n)
 
 # Getting Started with Create React App
 
@@ -130,3 +132,11 @@ module.exports = function (app) {
   );
 };
 ```
+
+## Transition
+
+參考套件: https://github.com/reactjs/react-transition-group
+
+## i18n
+
+參考套件: https://github.com/i18next/react-i18next
