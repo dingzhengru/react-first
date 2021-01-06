@@ -45,14 +45,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Redux
 
-全局狀態管理套件，但並非專屬於 React，只是契合度高，所以拿過來整合使用
-**所以建議使用官方出的 context api，而非此套件**
-
-參考: [該不該用 context api 來取代 redux?](https://medium.com/@nightspirit622/%E8%A9%B2%E4%B8%8D%E8%A9%B2%E7%94%A8context-api-%E4%BE%86%E5%8F%96%E4%BB%A3-redux-4d7395d5c8da)
+全局狀態管理套件，等同於 vue 的 vuex 的地位
+這部分練習是另外寫在: [這裡](https://github.com/dingzhengru/react-redux-test)
+另外官方有提供 context api 這個全局狀態管理方法
+可以視專案需求取決要用哪一個
 
 ## Context
 
-全局狀態管理
+官方提供的全局狀態管理方法
 
 參考: [官方文件](https://zh-hant.reactjs.org/docs/context.html)
 
@@ -139,4 +139,5 @@ module.exports = function (app) {
 
 ## i18n
 
-參考套件: https://github.com/i18next/react-i18next
+參考套件: [i18next](https://www.i18next.com/) & [react-i18next](https://github.com/i18next/react-i18next)
+插入變數: https://www.i18next.com/translation-function/interpolation

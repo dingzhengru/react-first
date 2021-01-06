@@ -130,7 +130,7 @@ function App() {
         <h2>i18n</h2>
         <p>
           {i18n.language}: {t('hi')} <br />
-          {i18n.language}: {t('test')}
+          {i18n.language}: {t('test', { num: 1 })}
         </p>
         <button onClick={() => handleLangChange(i18n.language == 'enUs' ? 'zhTw' : 'enUs')}>變更語系</button>
       </div>

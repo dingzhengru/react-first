@@ -8,8 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import './i18n-lazy';
 import { loadLanguageAsync } from './i18n-lazy';
 
-//* setLanguageAsync
-loadLanguageAsync('enUs')
+//* 設置初始語系
+loadLanguageAsync('enUs');
 
 ReactDOM.render(
   <BrowserRouter>

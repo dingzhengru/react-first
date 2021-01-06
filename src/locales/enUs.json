@@ -1,4 +1,4 @@
 {
   "hi": "Hello",
-  "test": "Test"
+  "test": "Test Variable {{num}}"
 }
