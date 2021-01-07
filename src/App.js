@@ -30,6 +30,9 @@ import TransitionTest from './components/TransitionTest';
 import { useTranslation } from 'react-i18next';
 import { loadLanguageAsync } from './i18n-lazy';
 
+// useMemo
+import UseMemoTest from './components/UseMemoTest';
+
 //* 測試溫度轉換，接近 vue 的 computed
 function toCelsius(fahrenheit) {
   return ((fahrenheit - 32) * 5) / 9;
@@ -133,6 +136,9 @@ function App() {
           {i18n.language}: {t('test', { num: 1 })}
         </p>
         <button onClick={() => handleLangChange(i18n.language == 'enUs' ? 'zhTw' : 'enUs')}>變更語系</button>
+
+        <h2>測試 useMemo (計算後變數，對應 vue 的 computed)</h2>
+        <UseMemoTest />
       </div>
     </ThemeContext.Provider>
   );

@@ -2,6 +2,12 @@
   - [Component & props & state](#component--props--state)
   - [Form](#form)
   - [Hook](#hook)
+    - [useState](#usestate)
+    - [useEffect](#useeffect)
+    - [useLayoutEffect](#uselayouteffect)
+    - [useMemo](#usememo)
+    - [useContext](#usecontext)
+    - [useReducer](#usereducer)
     - [custom hook (ex: useFriendStatus)](#custom-hook-ex-usefriendstatus)
   - [Redux](#redux)
   - [Context](#context)
@@ -34,9 +40,65 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Hook
 
+2019 年新增用來代替原本 class 的功能，**官方推薦使用 Hook 來代替 class**
+
 - 參考: [我應該使用 Hook、Class 或是兩者兼具？](https://zh-hant.reactjs.org/docs/hooks-faq.html#should-i-use-hooks-classes-or-a-mix-of-both)
 
-**官方推薦使用 Hook 來撰寫 component**
+### useState
+
+宣告 & 設置 state 的初始值與其修改的方法
+
+```js
+// 一般用法
+const [count, setCount] = useState(0);
+
+// 避免 render 重複執行用法(用於需要通過複雜的計算來獲得)
+// 參考: https://zh-hant.reactjs.org/docs/hooks-reference.html#lazy-initial-state
+
+const [obj, setObj] = useState(() => {
+  return {
+    a: 1,
+    b: 2,
+  };
+});
+```
+
+### useEffect
+
+單純是處理 Side Effects，可以用第二個參數選擇要對那些 state, props 反應
+觸發時機是 render 之後
+
+```js
+// 第二個變數放 count，代表只有 count 變動時才會觸發
+useEffect(() => {
+  console.log(count);
+}, [count]);
+```
+
+### useLayoutEffect
+
+跟 useEffect 不同的地方只有觸發時機
+是在 render 之前觸發的，useEffect 是 render 之後才觸發
+
+### useMemo
+
+用於回傳計算屬性，對應 vue 的 computed
+
+```js
+const countComputed = useMemo(() => {
+  return count * 2;
+});
+```
+
+### useContext
+
+用於取得存在 context 的值，下面有說明 Context 是甚麼
+
+### useReducer
+
+參考 redux 的 reducer 所生出的 hook
+可以用來結合 context 來模擬 redux 的全局狀態管理方式
+但最大的缺點是沒有提供 combineReducers 可以分成各個 namespace
 
 ### custom hook (ex: useFriendStatus)
 
@@ -52,9 +114,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Context
 
-官方提供的全局狀態管理方法
+官方提供的全局狀態管理方法，可以結合 useReducer 來達到跟 redux 類似的處理模式
 
-參考: [官方文件](https://zh-hant.reactjs.org/docs/context.html)
+參考文章: [useContext 與 useReducer 來做 Global State Manager](https://whien.medium.com/%E9%80%8F%E9%81%8E-react-usecontext-%E8%88%87-usereducer-%E4%BE%86%E5%81%9A-global-state-manager-bed30fb1f08b)
 
 ## Router
 
